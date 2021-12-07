@@ -14,7 +14,6 @@ const OnboardingChat = () => {
 		{ user: "owly", message: "What languages do you know?", clock: 2 },
 		{ user: "owly", message: "Are you a pizza lover?", clock: 3 },
 	];
-	const [count, setCount] = useState(0);
 	const [clock, setClock] = useState(0);
 
 	const [customerResponses, setCustomerReponses] = useState<
@@ -23,7 +22,6 @@ const OnboardingChat = () => {
 
 	const logEnter = (key: React.KeyboardEvent<HTMLTextAreaElement>): void => {
 		if (key.key === "Enter") {
-			setCount(count + 1);
 			setClock(clock + 1);
 
 			setCustomerReponses([
@@ -44,55 +42,69 @@ const OnboardingChat = () => {
 	});
 
 	return (
-		<Stack orientation="vertical" spacing="space60">
-			{chats.map((m) => (
-				<div>
-					{m.user === "owly" && m.clock <= clock && (
-						<Card>
-							<div style={styles.owlyMessage}>
-								<div style={styles.owlyName}>
-									<Heading as="h2" variant="heading20">
-										Owly
-									</Heading>
+		<div>
+			<div style={styles.bannerContainer}>
+				<h1 style={styles.welcomeBannerText}>Welcome to</h1>
+				<img height="100px" src="twilio-logo-red.svg"></img>
+			</div>
+			<div style={styles.chatContainer}>
+				<Stack orientation="vertical" spacing="space0">
+					{chats.map((m) => (
+						<div>
+							{m.user === "owly" && m.clock <= clock && (
+								<div style={styles.owlyMessageContainer}>
+									<div style={styles.owlyMessageBubble}>
+										<div style={styles.owlyName}>
+											<Heading
+												as="h2"
+												variant="heading40"
+											>
+												Owly
+											</Heading>
+										</div>
+										<Paragraph marginBottom="space0">
+											{m.message}
+										</Paragraph>
+									</div>
 								</div>
-								<Paragraph marginBottom="space0">
-									{m.message}
-								</Paragraph>
-							</div>
-						</Card>
-					)}
+							)}
 
-					{m.user === "customer" && (
-						<Card>
-							<div style={styles.userMessage}>
-								<div style={styles.userName}>
-									<Heading as="h2" variant="heading20">
-										tdelpopolo@gmail.com
-									</Heading>
+							{m.user === "customer" && (
+								<div>
+									<div style={styles.userMessageContainer}>
+										<div style={styles.owlyMessageBubble}>
+											<div style={styles.userName}>
+												<Heading
+													as="h2"
+													variant="heading60"
+												>
+													tdelpopolo@gmail.com
+												</Heading>
+											</div>
+											<div style={styles.userMessageText}>
+												<Paragraph marginBottom="space0">
+													{m.message}
+												</Paragraph>
+											</div>
+										</div>
+									</div>
 								</div>
-								<Paragraph marginBottom="space0">
-									{m.message}
-								</Paragraph>
-							</div>
-						</Card>
-					)}
-				</div>
-			))}
-			<Card>
-				<div style={styles.userMessage}>
-					<div style={styles.userName}>
-						<Heading as="h2" variant="heading20">
-							tdelpopolo@gmail.com
-						</Heading>
-					</div>
-					<TextArea
-						name="userInputArea"
-						placeholder="Enter text"
-						onKeyUp={logEnter}
-					></TextArea>
-				</div>
-			</Card>
-		</Stack>
+							)}
+						</div>
+					))}
+					<Card>
+						<div style={styles.userMessageContainer}>
+							<TextArea
+								name="userInputArea"
+								placeholder="Type your message"
+								onKeyUp={logEnter}
+								autoFocus
+							></TextArea>
+						</div>
+					</Card>
+				</Stack>
+			</div>
+		</div>
 	);
 };
 
