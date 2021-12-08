@@ -60,6 +60,9 @@ const OnboardingChat = () => {
 	chats.sort((a, b) => {
 		return a.clock - b.clock;
 	});
+	if (clock === 4) {
+		window.location.href = "/tw_dashboard/dashboard.html";
+	}
 
 	return (
 		<div style={styles.chatPage}>
