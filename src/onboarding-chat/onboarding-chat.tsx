@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TextArea, Stack, Card, Heading, Paragraph } from "@twilio-paste/core";
 import styles from "./styles";
 
@@ -7,7 +7,14 @@ interface ChatMessage {
 	message: string;
 	clock: number;
 }
+
 const OnboardingChat = () => {
+	const messageEndRef = useRef<HTMLDivElement>(null);
+
+	const scrollToBottom = () => {
+		messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
+
 	const owlyResponses: Array<ChatMessage> = [
 		{ user: "owly", message: "How are you doing?", clock: 0 },
 		{ user: "owly", message: "What time is it?", clock: 1 },
@@ -16,25 +23,38 @@ const OnboardingChat = () => {
 	];
 	const [clock, setClock] = useState(0);
 
+	const [thinking, setThinking] = useState(false);
+
 	const [customerResponses, setCustomerReponses] = useState<
 		Array<ChatMessage>
 	>([]);
 
-	const logEnter = (key: React.KeyboardEvent<HTMLTextAreaElement>): void => {
-		if (key.key === "Enter") {
-			setClock(clock + 1);
-
+	const logEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>): void => {
+		if (e.key === "Enter") {
+			e.preventDefault();
+			setThinking(true);
+			setTimeout(() => {
+				setClock(clock + 1);
+				scrollToBottom();
+				setThinking(false);
+			}, 1000 + 500 * Math.random());
 			setCustomerReponses([
 				...customerResponses,
 				{
 					user: "customer",
-					message: key.currentTarget.value,
+					message: e.currentTarget.value,
 					clock: clock,
 				},
 			]);
+
 			console.log(customerResponses);
+			e.currentTarget.value = "";
 		}
 	};
+
+	useEffect(() => {
+		scrollToBottom();
+	}, [thinking]);
 
 	const chats = [...owlyResponses, ...customerResponses];
 	chats.sort((a, b) => {
@@ -42,9 +62,9 @@ const OnboardingChat = () => {
 	});
 
 	return (
-		<div>
+		<div style={styles.chatPage}>
 			<div style={styles.bannerContainer}>
-				<h1 style={styles.welcomeBannerText}>Welcome to</h1>
+				<h1 style={styles.welcomeBannerText}>Ahoy! Welcome to</h1>
 				<img height="100px" src="twilio-logo-red.svg"></img>
 			</div>
 			<div style={styles.chatContainer}>
@@ -54,17 +74,8 @@ const OnboardingChat = () => {
 							{m.user === "owly" && m.clock <= clock && (
 								<div style={styles.owlyMessageContainer}>
 									<div style={styles.owlyMessageBubble}>
-										<div style={styles.owlyName}>
-											<Heading
-												as="h2"
-												variant="heading40"
-											>
-												Owly
-											</Heading>
-										</div>
-										<Paragraph marginBottom="space0">
-											{m.message}
-										</Paragraph>
+										<div style={styles.owlyName}>Owly</div>
+										{m.message}
 									</div>
 								</div>
 							)}
@@ -72,19 +83,12 @@ const OnboardingChat = () => {
 							{m.user === "customer" && (
 								<div>
 									<div style={styles.userMessageContainer}>
-										<div style={styles.owlyMessageBubble}>
+										<div style={styles.userMessageBubble}>
 											<div style={styles.userName}>
-												<Heading
-													as="h2"
-													variant="heading60"
-												>
-													tdelpopolo@gmail.com
-												</Heading>
+												tdelpopolo@gmail.com
 											</div>
 											<div style={styles.userMessageText}>
-												<Paragraph marginBottom="space0">
-													{m.message}
-												</Paragraph>
+												{m.message}
 											</div>
 										</div>
 									</div>
@@ -92,17 +96,26 @@ const OnboardingChat = () => {
 							)}
 						</div>
 					))}
-					<Card>
-						<div style={styles.userMessageContainer}>
-							<TextArea
-								name="userInputArea"
-								placeholder="Type your message"
-								onKeyUp={logEnter}
-								autoFocus
-							></TextArea>
+					{thinking && (
+						<div style={styles.owlyThinkingContainer}>
+							<Paragraph marginBottom="space0">
+								Owly is thinking
+							</Paragraph>
 						</div>
-					</Card>
+					)}
+					<div ref={messageEndRef} />
 				</Stack>
+			</div>
+			<div style={styles.bannerContainer}>
+				<div style={styles.textAreaContainer}>
+					<TextArea
+						name="userInputArea"
+						placeholder="Type your message"
+						onKeyDown={logEnter}
+						autoFocus
+						disabled={thinking}
+					></TextArea>
+				</div>
 			</div>
 		</div>
 	);

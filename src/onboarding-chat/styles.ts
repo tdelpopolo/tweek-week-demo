@@ -1,10 +1,21 @@
+import { Flex } from "@twilio-paste/flex";
 import { CSSProperties } from "react";
 
 export default {
+	chatPage: {
+		display: "block",
+	},
 	owlyMessageContainer: {
 		display: "block",
-		// gridColumn: 1,
-		// gridRow: 2,
+		padding: "5px 5px",
+	},
+	owlyThinkingContainer: {
+		display: "flex",
+		padding: "5px 5px",
+	},
+	userMessageContainer: {
+		display: "flex",
+		justifyContent: "right",
 		padding: "5px 5px",
 	},
 	bannerContainer: {
@@ -17,8 +28,18 @@ export default {
 		display: "block",
 		width: "fit-content",
 		justifyContent: "space-around",
-		border: "solid grey",
 		borderRadius: "10px",
+		backgroundColor: "orange",
+		color: "white",
+		padding: "5px",
+	},
+	userMessageBubble: {
+		display: "block",
+		width: "fit-content",
+		justifyContent: "space-around",
+		borderRadius: "10px",
+		backgroundColor: "grey",
+		color: "white",
 		padding: "5px",
 	},
 	welcomeBannerText: {
@@ -30,17 +51,19 @@ export default {
 	owlyName: {
 		display: "flex",
 		justifyItems: "left",
+		borderBottom: "solid",
 	},
-	userMessageContainer: {
+	textAreaContainer: {
 		display: "flex",
 		justifyContent: "right",
-		// gridColumn: 1,
-		// gridRow: 2,
 		padding: "5px 5px",
+		height: "60px",
+		width: "600px",
 	},
 	userName: {
 		display: "flex",
 		justifyContent: "right",
+		borderBottom: "solid",
 	},
 	userMessageText: {
 		display: "flex",
@@ -49,7 +72,10 @@ export default {
 	chatContainer: {
 		display: "block",
 		justifyContent: "center",
-		margin: "10px 100px",
-		border: "solid black",
+		margin: "auto auto",
+		boxShadow: "0px 0px 5px 0px grey",
+		width: "600px",
+		"overflow-y": "auto",
+		height: "400px",
 	},
 };
