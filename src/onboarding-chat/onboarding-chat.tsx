@@ -16,10 +16,12 @@ const OnboardingChat = () => {
 	};
 
 	const owlyResponses: Array<ChatMessage> = [
-		{ user: "owly", message: "How are you doing?", clock: 0 },
-		{ user: "owly", message: "What time is it?", clock: 1 },
-		{ user: "owly", message: "What languages do you know?", clock: 2 },
-		{ user: "owly", message: "Are you a pizza lover?", clock: 3 },
+		{ user: "owly", message: "Hello I'm Owly here to help you with assisting you in selecting Twilio products that best suit your requirements", clock: 0 },
+		{ user: "owly", message: "So that I can better assist you do you mind sharing the kind of business you're in", clock: 0 },
+		{ user: "owly", message: "Great. Thanks for your response! Would you mind sharing what regions your organization operates in?", clock: 1 },
+		{ user: "owly", message: "Excellent! And would your team prefer to program a solution or go with our minimal/no-code offering?", clock: 2 },
+		{ user: "owly", message: "Thank you! What programming language(s) does your development team use", clock: 3 },
+		{ user: "owly", message: "Thanks for your responses. Please give me a moment while I analyze your needs so that I can come up with an opimal set of products to suit your unique needs", clock: 4 },
 	];
 	const [clock, setClock] = useState(0);
 
