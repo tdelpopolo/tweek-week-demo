@@ -22,14 +22,20 @@ export default {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		margin: "5px",
+		margin: "40px",
+	},
+	textAreaContainerContainer: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		margin: "10px",
 	},
 	owlyMessageBubble: {
 		display: "block",
 		width: "fit-content",
 		justifyContent: "space-around",
 		borderRadius: "10px",
-		backgroundColor: "orange",
+		backgroundColor: "#ff2c45",
 		color: "white",
 		padding: "5px",
 	},
@@ -44,6 +50,7 @@ export default {
 	},
 	welcomeBannerText: {
 		fontSize: "40px",
+		padding: "12px",
 	},
 	welcomeBannerImage: {
 		fontSize: "40px",
@@ -70,12 +77,20 @@ export default {
 		justifyContent: "right",
 	},
 	chatContainer: {
+		fontFamily: `[
+			"Whitney SSm A",
+			"Whitney SSm B",
+			"Helvetica Neue",
+			"Helvetica",
+			"Arial",
+			"sans-serif",
+		]`,
 		display: "block",
 		justifyContent: "center",
 		margin: "auto auto",
 		boxShadow: "0px 0px 5px 0px grey",
 		width: "600px",
 		"overflow-y": "auto",
-		height: "400px",
+		height: "475px",
 	},
 };

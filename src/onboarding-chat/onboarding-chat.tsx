@@ -106,7 +106,7 @@ const OnboardingChat = () => {
 					<div ref={messageEndRef} />
 				</Stack>
 			</div>
-			<div style={styles.bannerContainer}>
+			<div style={styles.textAreaContainerContainer}>
 				<div style={styles.textAreaContainer}>
 					<TextArea
 						name="userInputArea"
