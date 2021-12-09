@@ -22,7 +22,7 @@ export default {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		margin: "40px",
+		margin: "20px",
 	},
 	textAreaContainerContainer: {
 		display: "flex",
@@ -35,7 +35,7 @@ export default {
 		width: "fit-content",
 		justifyContent: "space-around",
 		borderRadius: "10px",
-		backgroundColor: "#ff2c45",
+		backgroundColor: "white",
 		color: "white",
 		padding: "5px",
 		boxShadow: "0px 0px 3px 0px grey",
@@ -45,10 +45,10 @@ export default {
 		width: "fit-content",
 		justifyContent: "space-around",
 		borderRadius: "10px",
-		backgroundColor: "#4195D0",
+		backgroundColor: "#e4fdb4",
 		color: "black",
 		padding: "5px",
-		boxShadow: "0px 0px 3px 0px grey",
+		boxShadow: "0px 0px 3px 0px #79bd79",
 	},
 	welcomeBannerText: {
 		fontSize: "40px",
@@ -60,7 +60,9 @@ export default {
 	owlyName: {
 		display: "flex",
 		justifyItems: "left",
-		borderBottom: "1.5px solid pink",
+		color: "#a34946",
+		fontFamily: "Helvetica",
+		fontSize: ".8rem",
 	},
 	textAreaContainer: {
 		display: "flex",
@@ -71,12 +73,17 @@ export default {
 	},
 	userName: {
 		display: "flex",
-		justifyContent: "right",
-		borderBottom: "1.5px solid #c0e4ff",
+		justifyContent: "left",
+		color: "#37539c",
+		fontFamily: "Helvetica",
+		fontSize: ".8rem",
 	},
 	userMessageText: {
 		display: "flex",
 		justifyContent: "right",
+	},
+	owlyMessageText: {
+		color: "black",
 	},
 	chatContainer: {
 		fontFamily: `[

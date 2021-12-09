@@ -134,7 +134,7 @@ const OnboardingChat = () => {
 		<div style={styles.chatPage}>
 			<div style={styles.bannerContainer}>
 				<h1 style={styles.welcomeBannerText}>Ahoy! Welcome to</h1>
-				<img height="100px" src="twilio-logo-red.svg"></img>
+				<img height="65px" src="twilio-logo-red.svg"></img>
 			</div>
 			<div style={styles.chatContainer}>
 				<Stack orientation="vertical" spacing="space0">
@@ -144,7 +144,9 @@ const OnboardingChat = () => {
 								<div style={styles.owlyMessageContainer}>
 									<div style={styles.owlyMessageBubble}>
 										<div style={styles.owlyName}>Owly</div>
-										{m.message}
+										<div style={styles.owlyMessageText}>
+											{m.message}
+										</div>
 									</div>
 								</div>
 							)}
@@ -154,7 +156,7 @@ const OnboardingChat = () => {
 									<div style={styles.userMessageContainer}>
 										<div style={styles.userMessageBubble}>
 											<div style={styles.userName}>
-												tdelpopolo@gmail.com
+												Hakeem
 											</div>
 											<div style={styles.userMessageText}>
 												{m.message}
