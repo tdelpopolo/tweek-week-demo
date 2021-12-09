@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { TextArea, Stack, Card, Heading, Paragraph } from "@twilio-paste/core";
 import styles from "./styles";
 import { render } from "@testing-library/react";
+import { off } from "process";
 
 interface ChatMessage {
 	user: string;
@@ -22,7 +23,7 @@ const OnboardingChat = () => {
 			user: "owly",
 			message:
 				"Hello I'm Owly here to help you with assisting you in selecting Twilio products that best suit your requirements",
-			clock: 0,
+			clock: -1,
 		},
 		{
 			user: "owly",
@@ -62,7 +63,7 @@ const OnboardingChat = () => {
 			clock: 5,
 		},
 	];
-	const [clock, setClock] = useState(0);
+	const [clock, setClock] = useState(-2);
 
 	const [thinking, setThinking] = useState(false);
 
@@ -109,6 +110,10 @@ const OnboardingChat = () => {
 	});
 
 	useEffect(() => {
+		if (clock < 0) {
+			advance(2500);
+		}
+		console.log("test");
 		const finishStartMessage = owlyResponses.find((m) => {
 			return m.finished;
 		});
