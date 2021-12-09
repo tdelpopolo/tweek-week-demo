@@ -38,15 +38,17 @@ export default {
 		backgroundColor: "#ff2c45",
 		color: "white",
 		padding: "5px",
+		boxShadow: "0px 0px 3px 0px grey",
 	},
 	userMessageBubble: {
 		display: "block",
 		width: "fit-content",
 		justifyContent: "space-around",
 		borderRadius: "10px",
-		backgroundColor: "grey",
-		color: "white",
+		backgroundColor: "#4195D0",
+		color: "black",
 		padding: "5px",
+		boxShadow: "0px 0px 3px 0px grey",
 	},
 	welcomeBannerText: {
 		fontSize: "40px",
@@ -58,7 +60,7 @@ export default {
 	owlyName: {
 		display: "flex",
 		justifyItems: "left",
-		borderBottom: "solid",
+		borderBottom: "1.5px solid pink",
 	},
 	textAreaContainer: {
 		display: "flex",
@@ -70,7 +72,7 @@ export default {
 	userName: {
 		display: "flex",
 		justifyContent: "right",
-		borderBottom: "solid",
+		borderBottom: "1.5px solid #c0e4ff",
 	},
 	userMessageText: {
 		display: "flex",
